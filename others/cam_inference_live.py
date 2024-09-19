@@ -7,12 +7,13 @@ import supervision as sv
 
 CONFIDENCE = 0.5
 
+
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="YOLOv8 live")
     parser.add_argument(
-        "--webcam-resolution", 
-        default=[1280, 720], 
-        nargs=2, 
+        "--webcam-resolution",
+        default=[1280, 720],
+        nargs=2,
         type=int
     )
     args = parser.parse_args()
@@ -46,7 +47,7 @@ def main():
         if name.lower() == "person":
             person_class_id = class_id
             break
-    
+
     while True:
         ret, frame = cap.read()
 
@@ -55,7 +56,8 @@ def main():
 
         # Filter detections for birds and people with a certain confidence
         bird_people_detections = detections[
-            ((detections.class_id == bird_class_id) | (detections.class_id == person_class_id)) 
+            ((detections.class_id == bird_class_id) |
+             (detections.class_id == person_class_id))
             & (detections.confidence > CONFIDENCE)
         ]
 
@@ -65,11 +67,11 @@ def main():
             in bird_people_detections
         ]
         frame = box_annotator.annotate(
-            scene=frame, 
-            detections=bird_people_detections, 
+            scene=frame,
+            detections=bird_people_detections,
             labels=labels
-        )  
-        
+        )
+
         cv2.imshow("yolov8", frame)
 
         if (cv2.waitKey(30) == 27):

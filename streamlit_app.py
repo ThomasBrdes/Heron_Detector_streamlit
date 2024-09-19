@@ -8,7 +8,7 @@ st.set_page_config(layout="wide", page_title="Image Background Remover")
 
 st.write("## Human-Heron Detector")
 st.write(
-    ":dog: Try uploading an image to detect person or Heron. Full quality images can be downloaded from the sidebar. This code is open source and available [here](https://github.com/tyler-simons/BackgroundRemoval) on GitHub. Special thanks to the [rembg library](https://github.com/danielgatis/rembg) :grin:"
+    ":dog: Try uploading an image to detect person or Heron. Full quality images can be downloaded from the sidebar."
 )
 st.sidebar.write("## Upload and download :gear:")
 
@@ -18,7 +18,8 @@ MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
 PRE_RECORDED_DIR = "pre_recorded_images"
 
 # List available pre-recorded images
-pre_recorded_images = [f for f in os.listdir(PRE_RECORDED_DIR) if f.endswith(('.png', '.jpg', '.jpeg'))]
+pre_recorded_images = [f for f in os.listdir(
+    PRE_RECORDED_DIR) if f.endswith(('.png', '.jpg', '.jpeg'))]
 
 print(pre_recorded_images)
 
@@ -44,14 +45,17 @@ def process_image(upload, key):
     col2.write("Annotated Image :wrench:")
     col2.image(annotated_image)
     st.sidebar.markdown("\n")
-    st.sidebar.download_button("Download annotated image", convert_image(annotated_image), "annotated.png", "image/png", key=key)
+    st.sidebar.download_button("Download annotated image", convert_image(
+        annotated_image), "annotated.png", "image/png", key=key)
+
 
 # Streamlit layout for image upload and columns
 col1, col2 = st.columns(2)
 
 # ----------------------------------------------------------------
 # Option to select a pre-recorded image
-selected_image_name = st.sidebar.selectbox("Select a pre-recorded image", pre_recorded_images)
+selected_image_name = st.sidebar.selectbox(
+    "Select a pre-recorded image", pre_recorded_images)
 
 # Load selected pre-recorded image
 if selected_image_name:
@@ -61,11 +65,13 @@ if selected_image_name:
 # ----------------------------------------------------------------
 # Option to upload an image
 
-my_upload = st.sidebar.file_uploader("Or upload an image", type=["png", "jpg", "jpeg"])
+my_upload = st.sidebar.file_uploader(
+    "Or upload an image", type=["png", "jpg", "jpeg"])
 
 if my_upload is not None:
     if my_upload.size > MAX_FILE_SIZE:
-        st.error("The uploaded file is too large. Please upload an image smaller than 5MB.")
+        st.error(
+            "The uploaded file is too large. Please upload an image smaller than 5MB.")
     else:
         process_image(upload=my_upload, key="uploaded")
 else:

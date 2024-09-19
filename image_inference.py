@@ -4,10 +4,11 @@ import numpy as np
 
 CONFIDENCE = 0.5  # Confidence threshold
 
+
 def detect_and_annotate(image) -> any:
     """
     Detects birds and people in an image and returns the annotated image.
-    
+
     Args:
         image_path (str): Path to the input image.
 
@@ -43,7 +44,8 @@ def detect_and_annotate(image) -> any:
 
     # Filter detections for birds and people with confidence > 0.5
     bird_people_detections = detections[
-        ((detections.class_id == bird_class_id) | (detections.class_id == person_class_id)) 
+        ((detections.class_id == bird_class_id) |
+         (detections.class_id == person_class_id))
         & (detections.confidence > CONFIDENCE)
     ]
 
@@ -55,8 +57,8 @@ def detect_and_annotate(image) -> any:
 
     # Annotate the image with bounding boxes and labels
     annotated_image = box_annotator.annotate(
-        scene=image, 
-        detections=bird_people_detections, 
+        scene=image,
+        detections=bird_people_detections,
         labels=labels
     )
 
