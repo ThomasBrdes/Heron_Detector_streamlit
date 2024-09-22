@@ -8,7 +8,8 @@ Welcome to the **Human-Heron Detector**!
 
 This project is a real-time Human-Heron detection application powered by **YOLOv8** and a **Streamlit** interface.
 
-
+The streamlit app is accessible here [Humon-Heron Detector link](https://herondetectorapp-kxkhcaiot2ladzusdsnjvu.streamlit.app/).
+ 
 
 ## 📸 Features
 
