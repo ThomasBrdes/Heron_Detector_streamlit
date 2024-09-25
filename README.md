@@ -45,7 +45,7 @@ Follow these instructions to get the project up and running on your local machin
 ### 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/human-heron-detector.git
+git clone https://github.com/ThomasBrdes/Heron_Detector_streamlit.git
 cd human-heron-detector
 ```
 
@@ -69,6 +69,8 @@ Once the container is running, open your browser and navigate to http://localhos
 ## 📸 Screenshots
 
 Main Interface:
+
+![alt text](imgs/interface_screen.png)
 
 ## 💻 Tech Stack
 
